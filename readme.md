@@ -1,4 +1,6 @@
-## Customer Segmentation with BigQuery ML and Generative AI
+# Customer Segmentation with BigQuery ML and Generative AI
+<img width="287" height="293" alt="2 5" src="https://github.com/user-attachments/assets/81289e54-df71-4e9b-9aa3-c5a57de46b28" />
+
 
 This project demonstrates an end-to-end data science workflow for customer segmentation.
 
@@ -19,6 +21,7 @@ The entire workflow is executed within a Colab Enterprise Notebook in Google Clo
 # Vertex AI (for the Gemini Pro model)
 
 # BigQuery Studio (for the notebook environment)
+
 
 Python Libraries
 
@@ -119,6 +122,8 @@ plt.ylabel("Average Spend")
 plt.title("Attribute grouped by K-means cluster")
 plt.colorbar(scatter, label="Cluster ID")
 plt.show()
+<img width="419" height="440" alt="2 6" src="https://github.com/user-attachments/assets/e747b079-9543-4f60-b92b-245a235be49e" />
+
 
 # 5. Generative AI for Marketing Insights
 The centroid data (the average RFM values for each cluster) is extracted from the trained model in BigQuery. This data is then formatted and passed to the Gemini Pro model with a specific prompt.
@@ -168,5 +173,6 @@ Prerequisites: Ensure you have a Google Cloud project with the BigQuery and Vert
 Environment: Open this .ipynb file in a Colab Enterprise Notebook within BigQuery Studio.
 
 Configuration: Update the project_id and location variables in the second code cell to match your project details.
+
 
 Execution: Run the notebook cells sequentially from top to bottom.
