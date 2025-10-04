@@ -3,7 +3,7 @@
 <img width="287" height="293" alt="2 5" src="https://github.com/user-attachments/assets/81289e54-df71-4e9b-9aa3-c5a57de46b28" />
 
 ---
-# I receive the Gemini  for Data Scientists and Analysts Badge from Google CLoud Platform
+# I receive the Gemini  for Data Scientists and Analysts Badge from Google Cloud Platform
 
 This project demonstrates an end-to-end data science workflow for customer segmentation.
 
@@ -178,4 +178,5 @@ Environment: Open this .ipynb file in a Colab Enterprise Notebook within BigQuer
 Configuration: Update the project_id and location variables in the second code cell to match your project details.
 
 Execution: Run the notebook cells sequentially from top to bottom.
+
 
