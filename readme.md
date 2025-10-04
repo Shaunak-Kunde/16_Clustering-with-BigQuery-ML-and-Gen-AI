@@ -1,6 +1,9 @@
-# Customer Segmentation with BigQuery ML and Generative AI
+# Customer Segmentation with GCP BigQuery ML and Gemini Gen AI : Lab
+
 <img width="287" height="293" alt="2 5" src="https://github.com/user-attachments/assets/81289e54-df71-4e9b-9aa3-c5a57de46b28" />
 
+---
+# I receive the Gemini  for Data Scientists and Analysts Badge from Google CLoud Platform
 
 This project demonstrates an end-to-end data science workflow for customer segmentation.
 
@@ -14,16 +17,16 @@ The entire workflow is executed within a Colab Enterprise Notebook in Google Clo
 
 ## 🚀 Technologies Used
 
-# Google Cloud Platform (GCP)
+## Google Cloud Platform (GCP)
 
-# BigQuery (for data storage and ML model training)
+## BigQuery (for data storage and ML model training)
 
-# Vertex AI (for the Gemini Pro model)
+## Vertex AI (for the Gemini Pro model)
 
-# BigQuery Studio (for the notebook environment)
+## BigQuery Studio (for the notebook environment)
 
 
-Python Libraries
+## Python Libraries
 
 bigframes.pandas: A library that provides a pandas-like API for working with large datasets in BigQuery.
 
@@ -38,7 +41,7 @@ matplotlib: For data visualization.
 ## 📋 Project Workflow
 The notebook follows these key steps:
 
-# 1. Setup and Initialization
+## 1. Setup and Initialization
 First, we import the necessary Python libraries and initialize the BigQuery and Vertex AI clients with the project details.
 
 Python
@@ -49,16 +52,16 @@ import bigframes.pandas as bpd
 from vertexai.generative_models import GenerativeModel
 from bigframes.ml.cluster import KMeans
 
-# Define project variables
+## Define project variables
 project_id = 'qwiklabs-gcp-03-c63e9e82159a'
 dataset_name = "ecommerce"
 location = "us-central1"
 
-# Initialize clients
+## Initialize clients
 client = bigquery.Client(project=project_id)
 aiplatform.init(project=project_id, location=location)
 
-# 2. Data Preparation: RFM Analysis
+## 2. Data Preparation: RFM Analysis
 A new table, ecommerce.customer_stats, is created using a BigQuery SQL query. This table calculates three key marketing metrics for each customer based on their order history from 2022:
 
 Recency: days_since_last_order
@@ -67,7 +70,7 @@ Frequency: count_orders
 
 Monetary: average_spend
 
-SQL
+## SQL
 
 CREATE OR REPLACE TABLE ecommerce.customer_stats AS
 SELECT
@@ -88,27 +91,27 @@ SELECT
   )
 GROUP BY user_id;
 
-# 3. K-Means Clustering Model
+## 3. K-Means Clustering Model
 The prepared data is loaded into a BigQuery DataFrame, and a K-Means clustering model is trained to segment the customers into 5 distinct groups.
 
 Python
 
-# Load data into a BigQuery DataFrame
+## Load data into a BigQuery DataFrame
 bqdf = bpd.read_gbq(f"{project_id}.{dataset_name}.{table_name}")
 
-# Create and fit a K-Means model with 5 clusters
+## Create and fit a K-Means model with 5 clusters
 kmeans_model = KMeans(n_clusters=5)
 kmeans_model.fit(bqdf)
 
-# 4. Visualization
+## 4. Visualization
 The model's predictions are used to create a scatter plot with matplotlib, visualizing the customer clusters based on their average spend and the days since their last order.
 
 Python
 
-# Use the model to predict clusters
+## Use the model to predict clusters
 predictions_df = kmeans_model.predict(bqdf)
 
-# Generate scatterplot
+## Generate scatterplot
 import matplotlib.pyplot as plt
 plt.figure(figsize=(10, 7))
 scatter = plt.scatter(
@@ -125,10 +128,10 @@ plt.show()
 <img width="419" height="440" alt="2 6" src="https://github.com/user-attachments/assets/e747b079-9543-4f60-b92b-245a235be49e" />
 
 
-# 5. Generative AI for Marketing Insights
+## 5. Generative AI for Marketing Insights
 The centroid data (the average RFM values for each cluster) is extracted from the trained model in BigQuery. This data is then formatted and passed to the Gemini Pro model with a specific prompt.
 
-Prompt Snippet:
+## Prompt Snippet:
 
 Python
 
@@ -167,12 +170,12 @@ Step 2: Remind and Relate...
 
 Step 3: Make a High-Value Offer...
 
-⚙️ How to Run
+## ⚙️ How to Run
 Prerequisites: Ensure you have a Google Cloud project with the BigQuery and Vertex AI APIs enabled.
 
 Environment: Open this .ipynb file in a Colab Enterprise Notebook within BigQuery Studio.
 
 Configuration: Update the project_id and location variables in the second code cell to match your project details.
 
-
 Execution: Run the notebook cells sequentially from top to bottom.
+
